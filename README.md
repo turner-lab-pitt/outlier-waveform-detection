@@ -1,2 +1,3 @@
 # outlier-waveform-detection
-detects units with outlier waveform features
+
+[this repository is still in progress]
