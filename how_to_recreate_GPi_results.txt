@@ -1,12 +1,33 @@
 How to recreate the GPi outlier detection results
 updated 4/25/24
 --------------------------------------------------
-(1) The input data can be accessed from Zenodo.
-The extracted "GPi_input_data" folder should be 
-located in the same directory as the three 
-scripts listed below.  The "snip_processing", 
-"feature_functions", and "helper_functions" folders
-should also be located in this working directory.
+(1) The input data for monkey G and monkey I
+can be accessed from two separate Zenodo 
+repositories: 
+
+-> Data to accompany the outlier-waveform-detection 
+repository (Monkey G)
+-> Data to accompany the outlier-waveform-detection 
+repository (Monkey I)
+
+It was necessary to split the monkeys' data across
+two repositories, due to the Zenodo size limits. 
+Each Zenodo dataset will consist of a compressed
+archive with a title of the form 
+"GPi_input_data_(G/I)".  
+
+The scripts expect that a single GPi_input_data
+folder should be located in the same directory 
+as the three scripts listed below. Please create
+this folder, and place the contents of 
+GPi_input_data_G, and GPi_input_data_I, within it.
+Ultimately, you should have four .mat files, 
+and two subfolders (G and I) in this GPi_input_data
+directory.
+
+The "snip_processing", "feature_functions", and 
+"helper_functions" folders should also be located in 
+the same parent directory as GPi_input_data.
 
 (2) This code was written in Matlab R2022a. It is 
 not guaranteed to work in earlier Matlab versions.
