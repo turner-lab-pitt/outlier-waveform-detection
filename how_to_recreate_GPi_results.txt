@@ -1,0 +1,50 @@
+How to recreate the GPi outlier detection results
+updated 4/25/24
+--------------------------------------------------
+(1) The input data can be accessed from Zenodo.
+The extracted "GPi_input_data" folder should be 
+located in the same directory as the three 
+scripts listed below.  The "snip_processing", 
+"feature_functions", and "helper_functions" folders
+should also be located in this working directory.
+
+(2) This code was written in Matlab R2022a. It is 
+not guaranteed to work in earlier Matlab versions.
+
+(3) Two scripts need to be run for all combinations of 
+subject ("G" or "I") and mptp state ("Pre" and "Post").
+Subject/MPTP state can be changed by setting the
+"subj" and "mptp" variables towards the top of each
+script:
+
+	(a) generate_snips_loop.m
+		--> aligns the spike waveforms for each sorted unit
+		--> set writeData to true to write out the necessary data for 
+			the next step
+		--> optional: set writeFigs to true to save out figures of the 
+			aligned waveforms
+			
+	(b) compute_features_loop.m
+		--> quantifies several features based on the median of each 
+			sorted unit's waveforms
+		--> only three of these features will be used in the outlier detection 
+			step; others may be useful for other purposes
+		--> set writeData to true to write out the necessary data for 
+			the next step
+			
+(4) The final script, "get_dbscan_labels.m", should be run for the Pre and 
+Post states separately (analyses collapse over subjects). 
+	--> This script runs the DBSCAN clustering algorithm using 3 of the 
+		features quantified in (3)(b).
+	--> set writeData to true to write out the computed info to a .mat file
+	--> set writetbl to true to write out an Excel sheet that lists
+		the counts of units assigned to the "core", "border", and "outlier"
+		categories (stored in the "tbl" variable).
+	--> The "ix_out" variable can be used in tandem with the "nameSetsAll" 
+		variable to identify those rows in the datalists that correspond to 
+		the outliers, and with the "snctSetsAll" varible to visualize 
+		the waveforms of the outliers. 
+	--> The variables "nameSetsAll" and "snctSetsAll" take the form of cell arrays. 
+		If cells contain > 1 entry, this implies that the unit was isolated
+		across two or more sessions, and the means of the feature values from those
+		sessions were submitted to the DBSCAN step.
