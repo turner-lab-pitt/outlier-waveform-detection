@@ -5,10 +5,9 @@ updated 4/25/24
 can be accessed from two separate Zenodo 
 repositories: 
 
+-> Data to accompany the outlier-waveform-detection Github repository (Monkey G)
 -> Data to accompany the outlier-waveform-detection 
-repository (Monkey G)
--> Data to accompany the outlier-waveform-detection 
-repository (Monkey I)
+GIthub repository (Monkey I)
 
 It was necessary to split the monkeys' data across
 two repositories, due to the Zenodo size limits. 
