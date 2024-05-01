@@ -1,0 +1,44 @@
+How to recreate spike waveform alignment
+updated 4/30/24
+-----------------------------------------
+-> Note: This code was written in Matlab R2022a, and 
+makes use of optional toolboxes provided by Mathworks.  
+It is not guaranteed to work with earlier Matlab versions. 
+
+(1) Relevant data from monkey G, pre-MPTP are made available 
+in the Zenodo repository: 
+
+-> Data to accompany the outlier-waveform-detection 
+Github repository
+-> DOI: 10.5281/zenodo.11077189
+
+The data are limited to this monkey/MPTP combination due 
+to the practical challenges involved in uploading large
+files to Zenodo.
+
+(2) To demonstrate waveform alignment, it is sufficient to download one of the files in that Zenodo repository: 
+
+-> GPi_input_data_G_Pre.tar.7z
+
+(3) The downloaded file can be decompressed and extracted
+from the tar.7z archive using 7-zip: https://www.7-zip.org/ 
+
+(4) Step (3) should return the DataListGPre.mat file and the hpcont_data and spike_data directories. If you want to use the current filepath settings in the "generate_snips_loop.m" script, then within the outlier-waveform_detetion folder, do the following: 
+-> create the following nested folder structure: 
+GPi_input_data/G/Pre	
+-> move the hpcont_data and spike_data folders into GPi_input_data/G/Pre
+-> create a "GPi_datalists" folder
+-> move the DataListGPre.mat file into GPi_datalists
+
+(5) Run the "generate_snips_loop.m" script.
+-> "subj" should be set to "G"
+-> "mptp" should be set to "Pre"
+-> This code aligns the spike waveforms for each sorted unit,
+on a per-session basis
+-> set writeData to true to write out the snip data that 
+would be used for feature computation (already available
+on Zenodo, in snip_output.tar.7z)
+-> set writeFigs to true to save out figures of the 
+aligned waveforms
+
+

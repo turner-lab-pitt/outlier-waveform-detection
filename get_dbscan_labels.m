@@ -29,6 +29,10 @@ addpath(featprepaths{:})
 datadir = 'GPi_input_data';
 dataprepath = fullfile(basepath,datadir);
 addpath(dataprepath)  
+listdir = ['GPi_datalists'];
+listprepath = fullfile(basepath,listdir);
+addpath(listprepath) 
+
 
 %% set to true to combine features
 % across sessions for multi-session units
@@ -64,7 +68,7 @@ rowSetsCell = cell(nS,1);
 for s = 1:nS
     subj = subj_list{s}; 
     listfile = ['DataList',subj,mptp,'.mat'];
-    listpath = fullfile(dataprepath,listfile); 
+    listpath = fullfile(listprepath,listfile); 
     load(listpath,'datalist');
     fprintf('loading %s\n',listpath);   
     featpath = fullfile(featprepaths{s},featfile);

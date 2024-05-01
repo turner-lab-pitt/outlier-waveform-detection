@@ -11,7 +11,7 @@ warning('on','all')
 
 %% 
 subj = 'G';    
-mptp = 'Post';
+mptp = 'Pre';
 
 %% area
 Area = 'GPi';
@@ -28,11 +28,14 @@ addpath(scriptpaths{:})
 
 %% data paths: assumes that the input data
 % folder is in the current working dir
-datadir = 'GPi_input_data';
+datadir = ['GPi_input_data'];
 dataprepath = fullfile(basepath,datadir);
 addpath(dataprepath)  
+listdir = ['GPi_datalists'];
+listprepath = fullfile(basepath,listdir);
+addpath(listprepath) 
 listfile = ['DataList',subj,mptp,'.mat'];
-listpath = fullfile(dataprepath,listfile); 
+listpath = fullfile(listprepath,listfile); 
 fprintf('loading %s\n',listpath);   
 load(listpath,'datalist');
 contprepath = fullfile(dataprepath,subj,mptp,'hpcont_data');

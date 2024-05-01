@@ -32,8 +32,11 @@ snippath = fullfile(snipprepath,snipfile);
 datadir = 'GPi_input_data';
 dataprepath = fullfile(basepath,datadir);
 addpath(dataprepath)  
+listdir = ['GPi_datalists'];
+listprepath = fullfile(basepath,listdir);
+addpath(listprepath) 
 listfile = ['DataList',subj,mptp,'.mat'];
-listpath = fullfile(dataprepath,listfile); 
+listpath = fullfile(listprepath,listfile); 
 fprintf('loading %s\n',listpath);   
 load(listpath,'datalist');
 sortprepath = fullfile(dataprepath,subj,mptp,'spike_data');
