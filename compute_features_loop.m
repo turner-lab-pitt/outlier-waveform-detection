@@ -64,7 +64,7 @@ writefile = 'featdata.mat';
 vars_to_save = {'subj','mptp','Area',...
     'offsets','offsets_shifted','load_ok','ts_ok','dists','ct_sn_gp_pol','fs',...
     'snips_gp','samps_gp','snips_ex','samps_ex','feat',...
-    'featStrs','sncts','datalist'};
+    'featStrs','sncts','datalist','S'};
 	
 %%
 fprintf('loading %s\n',snippath)
@@ -115,10 +115,9 @@ for u  = 1:nU
     sortfile = datalist.sortfile{u};
     sortpath = fullfile(sortprepath,sortfile);
     fprintf('loading %s\n',sortpath)
-	load(sortpath,'S');	
-    gp = S.units.gp;
-    ts = S.units.ts;
-    Evts = S.Evts;	
+    gp = S(u).units.gp;
+    ts = S(u).units.ts;
+    Evts = S(u).Evts;	
 	% firing rate features
     % gp = all good period; hd = hold periods
 	feat.gpFR(u,1) = get_gp_fr(ts,gp); 

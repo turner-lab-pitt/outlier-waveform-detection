@@ -10,8 +10,8 @@ clc;
 warning('on','all')
 
 %% 
-subj = 'G';    
-mptp = 'Pre';
+subj = 'I';    
+mptp = 'Post';
 
 %% area
 Area = 'GPi';
@@ -42,7 +42,7 @@ contprepath = fullfile(dataprepath,subj,mptp,'hpcont_data');
 sortprepath = fullfile(dataprepath,subj,mptp,'spike_data');
 
 %% figure writing prefs
-writeFigs = true;  % writes figures with aligned snips (can take some time)
+writeFigs = false;  % writes figures with aligned snips (can take some time)
 figdir = fullfile('snip_figures',subj,mptp);
 figprepath = fullfile(basepath,figdir);
 if writeFigs; mkdir(figprepath); end
@@ -56,7 +56,7 @@ writefile = 'snipdata.mat';
 
 vars_to_save = {'subj';'mptp';'fnstr';'fn';'Area';...
     'offsets';'offsets_shifted';'load_ok';'ts_ok';'dists';'ct_sn_gp_pol';'search_dir';'fs';...
-    'offsets_search';'ctr_offset';...
+    'offsets_search';'ctr_offset';'S';...
     'snips_gp';'samps_gp';'snips_ex';'samps_ex';'datalist'};
 
 %% choose median or mean for summary over snips
@@ -128,10 +128,11 @@ for u = 1:nU
     sortfile = datalist.sortfile{u};
     sortpath = fullfile(sortprepath,sortfile);
     fprintf('loading %s\n',sortpath)
-	load(sortpath,'S');
-    snips_ok(u) = isfield(S.units,'snips'); 
-    fs(u) = extractFS(S); 
-    gpmask = get_gp_mask(S.units.gp,S.units.ts);
+	S_unit = load(sortpath,'S');
+    S(u) = S_unit.S;
+    snips_ok(u) = isfield(S(u).units,'snips'); 
+    fs(u) = extractFS(S(u)); 
+    gpmask = get_gp_mask(S(u).units.gp,S(u).units.ts);
     dt = fs(u)^-1;
     contfile = datalist.contfile{u};
     contpath = fullfile(contprepath,contfile);
@@ -141,7 +142,7 @@ for u = 1:nU
 	sorterflag = datalist.sorterflag(u);
     offsets_samp = offsets(Area); 
     offsets_ex = offsets_shifted(Area); 
-    ts = S.units.ts;
+    ts = S(u).units.ts;
     assert(~any(round(ts/dt) > numel(data)),'ts values too high')
     ts_ok(u) = true;
     [snips_orig,samps_orig] = create_snips(ts,data,fs(u),offsets_samp);
