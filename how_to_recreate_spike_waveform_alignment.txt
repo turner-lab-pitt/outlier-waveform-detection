@@ -23,7 +23,7 @@ files to Zenodo.
 (3) The downloaded file can be decompressed and extracted
 from the tar.7z archive using 7-zip: https://www.7-zip.org/ 
 
-(4) Step (3) should return the DataListGPre.mat file and the hpcont_data and spike_data directories. If you want to use the current filepath settings in the "generate_snips_loop.m" script, then within the outlier-waveform_detetion folder, do the following: 
+(4) Step (3) should return the DataListGPre.mat file and the hpcont_data and spike_data directories, nested under the G" and "Pre" folders. If you want to use the current filepath settings that are present by default in the "generate_snips_loop.m" script, then within the outlier-waveform_detetion folder, do the following: 
 -> create the following nested folder structure: 
 GPi_input_data/G/Pre	
 -> move the hpcont_data and spike_data folders into GPi_input_data/G/Pre
