@@ -10,8 +10,8 @@ clc;
 warning('on','all')
 
 %% 
-subj = 'I';    
-mptp = 'Post';
+subj = 'G';    
+mptp = 'Pre';
 
 %% area
 Area = 'GPi';
