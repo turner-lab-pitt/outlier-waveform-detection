@@ -1,5 +1,5 @@
 How to recreate spike waveform alignment
-updated 4/30/24
+updated 5/5/24
 -----------------------------------------
 -> Note: This code was written in Matlab R2022a, and 
 makes use of optional toolboxes provided by Mathworks.  
@@ -14,21 +14,28 @@ Github repository
 
 The data are limited to this monkey/MPTP combination due 
 to the practical challenges involved in uploading large
-files to Zenodo.
+files to Zenodo.  Data from the other three monkey/MPTP 
+combinations are available upon request.
 
-(2) To demonstrate waveform alignment, it is sufficient to download one of the files in that Zenodo repository: 
+(2) To demonstrate waveform alignment, downlaod the following files from the Zenodo repository: 
 
--> GPi_input_data_G_Pre.tar.7z
+-> GPi_datalists.tar.7z
+-> G_Pre_spike_data.tar.7z
+-> G_Pre_hpcont1.tar.7z
+-> G_Pre_hpcont2.tar.7z
+-> G_Pre_hpcont3.tar.7z
+-> G_Pre_hpcont4.tar.7z
 
-(3) The downloaded file can be decompressed and extracted
-from the tar.7z archive using 7-zip: https://www.7-zip.org/ 
+(3) The downloaded files can be decompressed using 7-zip: https://www.7-zip.org/.
+Files can also be extracted from the .tar archive with 7-zip, or with tar on the command line.
+Creation and placement of the files in specific folders will be useful for taking 
+advantage of the default filepath settings in the Matlab scripts; see below.
 
-(4) Step (3) should return the DataListGPre.mat file and the hpcont_data and spike_data directories, nested under the G" and "Pre" folders. If you want to use the current filepath settings that are present by default in the "generate_snips_loop.m" script, then within the outlier-waveform_detetion folder, do the following: 
--> create the following nested folder structure: 
-GPi_input_data/G/Pre	
--> move the hpcont_data and spike_data folders into GPi_input_data/G/Pre
--> create a "GPi_datalists" folder
--> move the DataListGPre.mat file into GPi_datalists
+(4) Unzipping/extracting the contents of GPi_datalists.tar.7z and of G_Pre_spike_data.tar.7z will return "GPi_datalists" and "GPi_input_data" folders, respectively, which can be placed in the same outlier-waveform-detection folder that houses this text file. 
+
+(5) Below GPi_input_data, you will find the nested subfolder structure "G/Pre". Create a folder in "Pre" called "hpcont_data" (alongside the existing "spike_data" folder).  
+
+(6) Decompression of each of the G_Pre_hpcont*.tar.7z files will reveal a set of .mat files.  These should be placed in the hpcont_data folder.
 
 (5) Run the "generate_snips_loop.m" script.
 -> "subj" should be set to "G"
