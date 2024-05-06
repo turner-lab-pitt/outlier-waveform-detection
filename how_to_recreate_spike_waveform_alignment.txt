@@ -35,7 +35,7 @@ advantage of the default filepath settings in the Matlab scripts; see below.
 
 (5) Below GPi_input_data, you will find the nested subfolder structure "G/Pre". Create a folder in "Pre" called "hpcont_data" (alongside the existing "spike_data" folder).  
 
-(6) Decompression/extraction of each of the G_Pre_hpcont*.tar.7z files will reveal a set of .mat files.  These should be placed in the hpcont_data folder.
+(6) Running decompression/extraction on each of the G_Pre_hpcont*.tar.7z files will reveal a set of .mat files.  These should be placed in the hpcont_data folder.
 
 (5) Run the "generate_snips_loop.m" script.
 -> "subj" should be set to "G"
