@@ -18,7 +18,7 @@ of the files in that Zenodo repository:
 -> snip_output.tar.7z
 -> GPi_datalists.tar.7z
  
-The remaining files on Zendoo are not necessary to recreate the outlier results, but can be useful to demonstrate how the spike waveforms were extracted and aligned (see "How to recreate spike waveform alignment.")
+The remaining files on Zenodo are not necessary to recreate the outlier results, but can be useful to demonstrate how the spike waveforms were extracted and aligned (see "How to recreate spike waveform alignment.")
 
 (2) The downloaded files can be decompressed and extracted
 from the tar.7z archive using 7-zip: https://www.7-zip.org/
